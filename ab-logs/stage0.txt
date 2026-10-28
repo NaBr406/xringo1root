@@ -1,0 +1,4 @@
+=== stage0 start 20:00:44 mode=Enforcing
+[1] up 147->151 hits=1 mode=Permissive
+[1] *** STAGE0 OK ***
+=== stage0 end 20:00:48 mode=Permissive

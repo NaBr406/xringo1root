@@ -1,0 +1,13 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.kt text eol=lf
+*.java text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf
+# Preserve historical console evidence byte for byte.
+ab-logs/** -text -whitespace
+emulator-crash.log -text -whitespace
+o3root-port/experiments/su text eol=lf

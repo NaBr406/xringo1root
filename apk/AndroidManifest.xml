@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="o1.st.shell"
+    android:versionCode="2"
+    android:versionName="2.0">
+
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35" />
+
+    <!-- NsdManager (mDNS service discovery) requires INTERNET; the rest keep
+         multicast/service discovery working across Android versions. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <!-- overlay is required so the pairing code can be typed without leaving
+         the system wireless-debugging screen (the code dies once you leave). -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- without this, Android 11+ package visibility hides most installed apps
+         from queryIntentActivities (we only saw ~10 of 207) -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <application
+        android:label="o1p Root"
+        android:allowBackup="false"
+        android:extractNativeLibs="true"
+        android:theme="@android:style/Theme.DeviceDefault">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="o1p Root">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver
+            android:name=".PairReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="o1.st.shell.PAIR_CODE" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

@@ -1,0 +1,113 @@
+Oops#1 Part1
+<11>[   28.697696] libprocessgroup: Failed to open /sys/fs/cgroup/uid_1000/pid_512/cgroup.procs: No such file or directory
+<14>[   34.513749] logd: start watching /data/system/packages.list ...
+<14>[   34.514530] logd: ReadPackageList, total packages: 216
+<36>[   62.489227] type=1400 audit(1793165050.347:30): avc:  denied  { read } for  comm="binder:2013_5" name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=318 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+<36>[   62.490800] type=1400 audit(1793165050.347:31): avc:  denied  { read } for  comm="binder:2013_5" name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+<36>[   62.497583] type=1400 audit(1793165050.355:32): avc:  denied  { read } for  comm="binder:2013_6" name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=318 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+<36>[   62.500199] type=1400 audit(1793165050.359:33): avc:  denied  { read } for  comm="binder:2013_6" name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+<12>[   65.106828] healthd: battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+<6>[   77.575417] binder: 599:702 ioctl 400c620e 757cd3eac274 returned -11
+<12>[  125.106224] healthd: battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+<36>[  127.687096] type=1400 audit(1793165115.547:34): avc:  denied  { read } for  comm="binder:2013_8" name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=318 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+<36>[  127.688701] type=1400 audit(1793165115.547:35): avc:  denied  { read } for  comm="binder:2013_8" name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+<12>[  185.106186] healthd: battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+<36>[  186.541905] type=1400 audit(1793165174.403:36): avc:  denied  { syslog_read } for  comm="dmesg" scontext=u:r:shell:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+<14>[  186.704043] init: Untracked pid 3532 exited with status 0
+<14>[  186.704372] init: Untracked pid 3532 did not have an associated service entry and will not be reaped
+<14>[  186.912117] init: Untracked pid 3538 exited with status 0
+<4>[  186.912152] general protection fault, probably for non-canonical address 0x5bdf13cd62f415f0: 0000 [#1] PREEMPT SMP NOPTI
+<14>[  186.912457] init: Untracked pid 3538 did not have an associated service entry and will not be reaped
+<4>[  186.913058] CPU: 1 PID: 3527 Comm: trigger_v3 Tainted: G           OE      6.6.50-android15-8-g8adecb593e9b-ab12525588 #1 03466743f55c4b5f087fe5c3134f2e4d2835d3e1
+<4>[  186.914715] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.11.1-0-g0551a4be2c-prebuilt.qemu-project.org 04/01/2014
+<4>[  186.915406] RIP: 0010:rb_next+0x21/0x50
+<4>[  186.915673] Code: 81 23 b8 50 74 03 0f 0b 90 66 0f 1f 00 48 39 3f 75 08 31 c0 c3 cc cc cc cc cc 55 48 89 e5 48 8b 4f 08 48 85 c9 74 0e 48 89 c8 <48> 8b 49 10 48 85 c9 75 f4 eb 12 48 8b 07 48 83 e0 fc 74 09 48 3b
+<4>[  186.916750] RSP: 0018:ffffa85147e6bc38 EFLAGS: 00010002
+<4>[  186.917055] RAX: 5bdf13cd62f415e0 RBX: ffff952e1cee6670 RCX: 5bdf13cd62f415e0
+<4>[  186.917461] RDX: 0000000000000001 RSI: ffff952de0468ff0 RDI: ffff952de0468ff0
+<4>[  186.917975] RBP: ffffa85147e6bc38 R08: 0000000000000000 R09: 0000000000000029
+<4>[  186.918393] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000011
+<4>[  186.918816] R13: ffff952dd9542100 R14: ffff952de0468ff0 R15: ffff952e1cee6670
+<4>[  186.919243] FS:  000076b3a43d3fa8(0000) GS:ffff952e3da80000(0000) knlGS:0000000000000000
+<4>[  186.919797] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+<4>[  186.920141] CR2: 000076b187c1afc8 CR3: 0000000079ba0003 CR4: 0000000000970ea0
+<4>[  186.920581] Call Trace:
+<4>[  186.920765]  <TASK>
+<4>[  186.920907]  ? __die_body+0x67/0xb0
+<4>[  186.921129]  ? die_addr+0xa9/0xd0
+<4>[  186.921341]  ? exc_general_protection+0x14d/0x1f0
+<4>[  186.921740]  ? asm_exc_general_protection+0x2b/0x30
+<4>[  186.922037]  ? rb_next+0x21/0x50
+<4>[  186.922239]  timerqueue_del+0x24/0x60
+<4>[  186.922458]  posix_cpu_timers_exit+0x92/0xc0
+<4>[  186.922721]  release_task+0xfe/0x600
+<4>[  186.922945]  wait_consider_task+0x712/0x970
+<4>[  186.923263]  do_wait+0x176/0x2a0
+<4>[  186.923472]  kernel_wait4+0x13d/0x190
+<4>[  186.923701]  ? __cfi_child_wait_callback+0x10/0x10
+<4>[  186.923996]  __x64_sys_wait4+0x63/0xd0
+<4>[  186.924230]  x64_sys_call+0x66a/0x2e10
+<4>[  186.924465]  do_syscall_64+0x4a/0xa0
+<4>[  186.924689]  ? exc_page_fault+0x65/0xc0
+<4>[  186.924929]  entry_SYSCALL_64_after_hwframe+0x78/0xe2
+<4>[  186.925229] RIP: 0033:0x266afa
+<4>[  186.925427] Code: 49 89 ca b8 15 01 00 00 0f 05 48 3d 01 f0 ff ff 72 09 f7 d8 89 c7 e8 a5 e5 ff ff c3 0f 1f 40 00 49 89 ca b8 3d 00 00 00 0f 05 <48> 3d 01 f0 ff ff 72 09 f7 d8 89 c7 e8 85 e5 ff ff c3 0f 1f 40 00
+<4>[  186.926646] RSP: 002b:00007ffc730e25f8 EFLAGS: 00000246 ORIG_RAX: 000000000000003d
+<4>[  186.927094] RAX: ffffffffffffffda RBX: 0000000000000b4f RCX: 0000000000266afa
+<4>[  186.927518] RDX: 0000000000000001 RSI: 00007ffc730e2610 RDI: 0000000000000dce
+<4>[  186.927957] RBP: 00007ffc730e2660 R08: 0000000000000000 R09: 000276b20437fd18
+<4>[  186.928388] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000dce
+<4>[  186.928818] R13: 0000000000000001 R14: 0000000000000000 R15: 00007ffc730e2610
+<4>[  186.929357]  </TASK>
+<4>[  186.929498] Modules linked in: virtio_snd(E) virtio_pmem(E) virtio_net(E) virtio_input(E) virtio_balloon(E) virtio_gpu(E) virt_wifi(E) vhci_hcd(E) v4l2loopback(OE) usbip_core(E) test_meminit(E) system_heap(E) rtc_test(E) pulse8_cec(E) net_failover(E) nd_virtio(E) mt76x2u(E) mt76x2_common(E) mt76x0u(E) mt76x02_usb(E) mt76x0_common(E) mt76x02_lib(E) mt76_usb(E) mt76(E) mac80211_hwsim(E) mac80211(E) libarc4 hci_vhci(E) gs_usb(E) can_dev goldfish_sync(OE) goldfish_pipe(OE) goldfish_battery(E) goldfish_address_space(OE) failover(E) dummy_hcd(E) dummy_cpufreq(E) cfg80211(E) btusb(E) btbcm btrtl(E) btintel(E) bluetooth zram rfkill zsmalloc vmw_vsock_virtio_transport(E) virtio_rng(E) virtio_pci(E) virtio_pci_legacy_dev(E) virtio_pci_modern_dev(E) virtio_dma_buf(E) virtio_console(E) virtio_blk(E)
+<4>[  186.933493] ---[ end trace 0000000000000000 ]---
+P: ffffa85147e6bc38 R08: 0000000000000000 R09: 0000000000000029
+[  186.918393] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000011
+[  186.918816] R13: ffff952dd9542100 R14: ffff952de0468ff0 R15: ffff952e1cee6670
+[  186.919243] FS:  000076b3a43d3fa8(0000) GS:ffff952e3da80000(0000) knlGS:0000000000000000
+[  186.919797] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  186.920141] CR2: 000076b187c1afc8 CR3: 0000000079ba0003 CR4: 0000000000970ea0
+[  186.920581] Call Trace:
+[  186.920765]  <TASK>
+[  186.920907]  ? __die_body+0x67/0xb0
+[  186.921129]  ? die_addr+0xa9/0xd0
+[  186.921341]  ? exc_general_protection+0x14d/0x1f0
+[  186.921740]  ? asm_exc_general_protection+0x2b/0x30
+[  186.922037]  ? rb_next+0x21/0x50
+[  186.922239]  timerqueue_del+0x24/0x60
+[  186.922458]  posix_cpu_timers_exit+0x92/0xc0
+[  186.922721]  release_task+0xfe/0x600
+[  186.922945]  wait_consider_task+0x712/0x970
+[  186.923263]  do_wait+0x176/0x2a0
+[  186.923472]  kernel_wait4+0x13d/0x190
+[  186.923701]  ? __cfi_child_wait_callback+0x10/0x10
+[  186.923996]  __x64_sys_wait4+0x63/0xd0
+[  186.924230]  x64_sys_call+0x66a/0x2e10
+[  186.924465]  do_syscall_64+0x4a/0xa0
+[  186.924689]  ? exc_page_fault+0x65/0xc0
+[  186.924929]  entry_SYSCALL_64_after_hwframe+0x78/0xe2
+[  186.925229] RIP: 0033:0x266afa
+[  186.925427] Code: 49 89 ca b8 15 01 00 00 0f 05 48 3d 01 f0 ff ff 72 09 f7 d8 89 c7 e8 a5 e5 ff ff c3 0f 1f 40 00 49 89 ca b8 3d 00 00 00 0f 05 <48> 3d 01 f0 ff ff 72 09 f7 d8 89 c7 e8 85 e5 ff ff c3 0f 1f 40 00
+[  186.926646] RSP: 002b:00007ffc730e25f8 EFLAGS: 00000246 ORIG_RAX: 000000000000003d
+[  186.927094] RAX: ffffffffffffffda RBX: 0000000000000b4f RCX: 0000000000266afa
+[  186.927518] RDX: 0000000000000001 RSI: 00007ffc730e2610 RDI: 0000000000000dce
+[  186.927957] RBP: 00007ffc730e2660 R08: 0000000000000000 R09: 000276b20437fd18
+[  186.928388] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000dce
+[  186.928818] R13: 0000000000000001 R14: 0000000000000000 R15: 00007ffc730e2610
+[  186.929357]  </TASK>
+[  186.929498] Modules linked in: virtio_snd(E) virtio_pmem(E) virtio_net(E) virtio_input(E) virtio_balloon(E) virtio_gpu(E) virt_wifi(E) vhci_hcd(E) v4l2loopback(OE) usbip_core(E) test_meminit(E) system_heap(E) rtc_test(E) pulse8_cec(E) net_failover(E) nd_virtio(E) mt76x2u(E) mt76x2_common(E) mt76x0u(E) mt76x02_usb(E) mt76x0_common(E) mt76x02_lib(E) mt76_usb(E) mt76(E) mac80211_hwsim(E) mac80211(E) libarc4 hci_vhci(E) gs_usb(E) can_dev goldfish_sync(OE) goldfish_pipe(OE) goldfish_battery(E) goldfish_address_space(OE) failover(E) dummy_hcd(E) dummy_cpufreq(E) cfg80211(E) btusb(E) btbcm btrtl(E) btintel(E) bluetooth zram rfkill zsmalloc vmw_vsock_virtio_transport(E) virtio_rng(E) virtio_pci(E) virtio_pci_legacy_dev(E) virtio_pci_modern_dev(E) virtio_dma_buf(E) virtio_console(E) virtio_blk(E)
+[  186.933493] ---[ end trace 0000000000000000 ]---
+[  186.936496] pstore: backend (ramoops) writing error (-28)
+[  186.936834] RIP: 0010:rb_next+0x21/0x50
+[  186.937074] Code: 81 23 b8 50 74 03 0f 0b 90 66 0f 1f 00 48 39 3f 75 08 31 c0 c3 cc cc cc cc cc 55 48 89 e5 48 8b 4f 08 48 85 c9 74 0e 48 89 c8 <48> 8b 49 10 48 85 c9 75 f4 eb 12 48 8b 07 48 83 e0 fc 74 09 48 3b
+[  186.938133] RSP: 0018:ffffa85147e6bc38 EFLAGS: 00010002
+[  186.938533] RAX: 5bdf13cd62f415e0 RBX: ffff952e1cee6670 RCX: 5bdf13cd62f415e0
+[  186.938952] RDX: 0000000000000001 RSI: ffff952de0468ff0 RDI: ffff952de0468ff0
+[  186.939570] RBP: ffffa85147e6bc38 R08: 0000000000000000 R09: 0000000000000029
+[  186.939995] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000011
+[  186.940416] R13: ffff952dd9542100 R14: ffff952de0468ff0 R15: ffff952e1cee6670
+[  186.940835] FS:  000076b3a43d3fa8(0000) GS:ffff952e3da80000(0000) knlGS:0000000000000000
+[  186.941311] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  186.941787] CR2: 000076b187c1afc8 CR3: 0000000079ba0003 CR4: 0000000000970ea0
+[  186.942196] Kernel panic - not syncing: Fatal exception
+[  186.942785] Kernel Offset: 0x600000 from 0xffffffff81000000 (relocation range: 0xffffffff80000000-0xffffffffbfffffff)

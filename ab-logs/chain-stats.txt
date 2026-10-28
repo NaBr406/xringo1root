@@ -1,0 +1,9 @@
+=== chain stats 20:26:10 start mode=Enforcing
+[A1] hit=0 mode=Enforcing reboot=False
+[A2] hit=1 mode=Permissive reboot=False
+[A2] PERMISSIVE reached
+phaseA: tries=2 hits=1 reboots=0 mode=Permissive
+[B1]  reboot=False
+[B2]  reboot=False
+[B3]  reboot=False
+=== chain stats end 20:26:54 mode=Permissive

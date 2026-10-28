@@ -1,0 +1,20 @@
+=== ksu loop start 19:03:26 hash=e2e587104b32e10cfcc0097540aeda877d16c146cf384ece59f94ac838d4088f
+[1] payload ok
+[1] uptime 284.49 -> 439.76  kernelsu=0
+     UIDNOW uid=2000 euid=2000 gid=2000 | FULLROOT armed=0 fakekva=0xffffff82902e1000
+[2] payload ok
+[2] uptime 440.45 -> 121.49  kernelsu=0
+     
+[3] payload ok
+[3] uptime 122.24 -> 110.46  kernelsu=0
+     
+[4] payload ok
+[4] uptime 111.21 -> 117.84  kernelsu=0
+     
+[5] payload ok
+[5] uptime 118.58 -> 119.13  kernelsu=0
+     
+[6] payload ok
+[6] uptime 119.92 -> 123.50  kernelsu=0
+     
+=== loop end 19:19:02

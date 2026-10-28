@@ -1,0 +1,10 @@
+=== twophase start 20:05:29
+[A1] up 73->76 mode=Enforcing
+[A2] up 77->81 mode=Enforcing
+[A3] up 81->85 mode=Enforcing
+[A4] up 86->90 mode=Enforcing
+[A5] up 91->95 mode=Enforcing
+[A6] up 95->99 mode=Enforcing
+[A7] up 100->104 mode=Enforcing
+[A8] up 104->109 mode=Enforcing
+phase A failed
