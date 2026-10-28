@@ -19,6 +19,7 @@ __pycache__/
 *.pyc
 /apk/build/
 /apk/kout/
+/apk/assets/su_arm64
 /o3root-port/build/
 /ab-logs/bzImage-*
 /trigger_arm64
