@@ -1,3 +1,10 @@
+/*
+ * Derived from RikkaApps/Shizuku (Apache-2.0).
+ * Source revision: b844bc491f1790c72328e1a8e5b2349f8978f0ea
+ * Source path: manager/src/main/java/moe/shizuku/manager/adb/AdbKey.kt
+ * Modified for xringo1root before archival; not an unmodified upstream file.
+ * See THIRD_PARTY_NOTICES.md and licenses/Shizuku-LICENSE at repository root.
+ */
 package moe.shizuku.manager.adb
 
 import android.annotation.SuppressLint

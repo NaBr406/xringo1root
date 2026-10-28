@@ -1,3 +1,10 @@
+/*
+ * Adapted from zsw125/o3root, payload/o3p.c.
+ * Copyright (c) 2026 O3Root contributors
+ * Upstream original code: MIT; see licenses/o3root-LICENSE at repository root.
+ * Modified for dijun and local rootd integration; not an upstream release.
+ * See THIRD_PARTY_NOTICES.md for provenance and license scope.
+ */
 #define _GNU_SOURCE 1
 #include <stdio.h>
 #include <stdarg.h>

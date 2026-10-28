@@ -18,11 +18,13 @@
 
 当前不是从干净克隆一键构建的发行版。`apk/build.ps1` 编译 Java 并消费 `apk/kout`，不会编译 Kotlin；历史 Kotlin 编译流程见 `wsl/65_stage_kotlin.sh`。SDK、JDK 和 WSL 路径仍保留原环境配置。
 
-APK 依赖 Kotlin/Bouncy Castle JAR、JNI `libadb.so`、assets 原生产物及预编译 Kotlin class。这些二进制仅保留在原工作区，没有提交。原生载荷和 KernelSU 模块也未作为发行包上传。
+APK 依赖 Kotlin/Bouncy Castle JAR、JNI `libadb.so`、assets 原生产物及预编译 Kotlin class。这些二进制不在当前源码树中。首个归档提交曾包含 `apk/assets/su_arm64`，后续已移除，但 Git 历史仍保留该文件。原生载荷和 KernelSU 模块未作为发行包上传。
 
 设备镜像、设备转储、签名密钥、APK、编译产物和历史截图由 `.gitignore` 排除，本地原文件未删除。日志和报告是历史快照，不证明当前设备状态或当前上游补丁状态。
 
 ## 第三方来源
+
+完整署名、来源版本和许可范围见 [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md)。
 
 - 原生移植及 `o3root-ref/` 来源： https://github.com/zsw125/o3root 。对应关系见根目录 `O3ROOT-REFERENCE.md`。本次未为整个项目指定新的开源许可证。
 - ADB Kotlin 代码来自本地 Shizuku checkout，提交 `b844bc491f1790c72328e1a8e5b2349f8978f0ea`，并包含已有本地适配。随附 `licenses/Shizuku-LICENSE`（Apache-2.0）；该许可证不自动覆盖本仓库其他代码。

@@ -1,3 +1,10 @@
+/*
+ * Derived from RikkaApps/Shizuku (Apache-2.0).
+ * Source revision: b844bc491f1790c72328e1a8e5b2349f8978f0ea
+ * Source path: manager/src/main/java/moe/shizuku/manager/adb/AdbProtocol.kt
+ * Upstream code preserved; provenance comment added by xringo1root.
+ * See THIRD_PARTY_NOTICES.md and licenses/Shizuku-LICENSE at repository root.
+ */
 package moe.shizuku.manager.adb
 
 object AdbProtocol {
