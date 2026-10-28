@@ -14,6 +14,23 @@
 
 当前仓库是研究工作区的源码归档，不是开箱即用的发行版。文档和日志记录的是当时的结果，不代表设备当前状态，也不保证其他环境能够复现。
 
+## 实机与 boot 版本
+
+2026-10-29 已通过 ADB 只读核对当前实机：
+
+| 项目 | 读数 |
+| --- | --- |
+| 设备 / SoC | Xiaomi `25042PN24C`（`dijun`）/ XRing O1 |
+| 系统 | `OS4.0.0.19.XODCNXM`，Android 17 / SDK 37 |
+| Boot image 构建指纹 | `Xiaomi/missi/missi:17/CP2A.260605.016/17OS4.0.260920.221408987.XRPECN.S:user/release-keys` |
+| 运行内核 | `6.18.21-android17-5-g1d099fcb35e0-abogki538445360-4k` |
+| 启动状态 | 槽位 `_b`，bootloader locked，AVB green |
+| 当前 SELinux | `Permissive`（不同于早期报告中的 Enforcing） |
+
+研究用 `boot.img` 从同版本 OTA 提取，header v4，大小 96 MiB。本地内核镜像的版本串与实机 `/proc/version` 一致；直接读取实机 boot 分区哈希仍被拒绝，尚未确认镜像逐字节一致。
+
+完整系统/vendor 指纹、镜像 SHA-256、采集证据及历史状态区别见 [实机版本页](docs/DEVICE-dijun.md)。
+
 ## 目录
 
 | 路径 | 内容 |
@@ -29,6 +46,7 @@
 
 ## 文档入口
 
+- [实机配置、boot 版本和镜像校验值](docs/DEVICE-dijun.md)
 - [工作区归档与构建边界](docs/WORKSPACE.md)
 - [研究报告与验证记录](REPORT.md)
 - [dijun 移植记录](PORT-dijun.md)

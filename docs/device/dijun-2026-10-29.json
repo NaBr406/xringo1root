@@ -1,0 +1,99 @@
+{
+  "captured_at": "2026-10-29T01:34:18+08:00",
+  "method": "Read-only adb shell; device serial intentionally omitted",
+  "properties": {
+    "ro.product.manufacturer": "Xiaomi",
+    "ro.product.model": "25042PN24C",
+    "ro.product.device": "dijun",
+    "ro.product.name": "dijun",
+    "ro.soc.manufacturer": "XRing",
+    "ro.soc.model": "O1",
+    "ro.board.platform": "O1_asic",
+    "ro.product.cpu.abilist": "arm64-v8a",
+    "ro.build.version.release": "17",
+    "ro.build.version.sdk": "37",
+    "ro.build.version.incremental": "OS4.0.0.19.XODCNXM",
+    "ro.build.id": "CP2A.260605.016",
+    "ro.build.display.id": "CP2A.260605.016",
+    "ro.build.fingerprint": "Xiaomi/dijun/dijun:17/CP2A.260605.016/OS4.0.0.19.XODCNXM:user/release-keys",
+    "ro.bootimage.build.fingerprint": "Xiaomi/missi/missi:17/CP2A.260605.016/17OS4.0.260920.221408987.XRPECN.S:user/release-keys",
+    "ro.vendor.build.fingerprint": "Xiaomi/dijun/dijun:15/AP3A.240905.015.A2/OS4.0.0.19.XODCN:user/release-keys",
+    "ro.build.version.security_patch": "2026-09-01",
+    "ro.vendor.build.security_patch": "2026-09-01",
+    "ro.bootimage.build.version.security_patch": "",
+    "ro.build.type": "user",
+    "ro.build.tags": "release-keys",
+    "ro.debuggable": "0",
+    "ro.boot.slot_suffix": "_b",
+    "ro.boot.verifiedbootstate": "green",
+    "ro.boot.vbmeta.device_state": "locked",
+    "ro.boot.flash.locked": "1",
+    "ro.boot.veritymode": "enforcing",
+    "ro.boot.avb_version": "1.4",
+    "ro.boot.bootloader": "",
+    "ro.boot.hardware": "O1_asic"
+  },
+  "readback": {
+    "uname -a": {
+      "exit_code": 0,
+      "stdout": "Linux localhost 6.18.21-android17-5-g1d099fcb35e0-abogki538445360-4k #1 SMP PREEMPT Tue Jul 28 13:29:24 UTC 2026 aarch64 Toybox",
+      "stderr": ""
+    },
+    "cat /proc/version": {
+      "exit_code": 0,
+      "stdout": "Linux version 6.18.21-android17-5-g1d099fcb35e0-abogki538445360-4k (kleaf@build-host) (Android (15323222, +pgo, +bolt, +lto, +mlgo, based on r584948c) clang version 22.0.1 (https://android.googlesource.com/toolchain/llvm-project 2d65e4108033380e6fe8e08b1f1826cd2bfb0c99), LLD 22.0.1 (/mnt/disks/build-disk/src/googleplex-android/llvm-r584948-release/out/llvm-project/llvm 2d65e4108033380e6fe8e08b1f1826cd2bfb0c99)) #1 SMP PREEMPT Tue Jul 28 13:29:24 UTC 2026",
+      "stderr": ""
+    },
+    "getconf PAGESIZE": {
+      "exit_code": 0,
+      "stdout": "4096",
+      "stderr": ""
+    },
+    "getenforce": {
+      "exit_code": 0,
+      "stdout": "Permissive",
+      "stderr": ""
+    },
+    "id": {
+      "exit_code": 0,
+      "stdout": "uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:shell:s0",
+      "stderr": ""
+    },
+    "cat /proc/meminfo | head -n 3": {
+      "exit_code": 0,
+      "stdout": "MemTotal:       15958384 kB\nMemFree:          779040 kB\nMemAvailable:    5247168 kB",
+      "stderr": ""
+    },
+    "ls -l /dev/block/by-name/boot_a /dev/block/by-name/boot_b": {
+      "exit_code": 0,
+      "stdout": "lrwxrwxrwx 1 root root 16 2026-10-29 00:28 /dev/block/by-name/boot_a -> /dev/block/sdc17\nlrwxrwxrwx 1 root root 16 2026-10-29 00:28 /dev/block/by-name/boot_b -> /dev/block/sdc49",
+      "stderr": ""
+    },
+    "dumpsys package o1.st.shell | grep -E \"versionCode=|versionName=\"": {
+      "exit_code": 0,
+      "stdout": "versionCode=2 minSdk=21 targetSdk=35\n    versionName=2.0",
+      "stderr": ""
+    },
+    "sha256sum /dev/block/by-name/boot_b": {
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "sha256sum: /dev/block/by-name/boot_b: Permission denied"
+    }
+  },
+  "local_ota_artifacts": {
+    "boot.img": {
+      "bytes": 100663296,
+      "sha256": "8563cbf6f196daec15e23f773276dd811b023b6f76df1953b24af4d1b5066f07",
+      "magic": "ANDROID!",
+      "kernel_size": 42936832,
+      "header_version": 4,
+      "kernel_offset": 4096
+    },
+    "kernel_image.bin": {
+      "bytes": 42936832,
+      "sha256": "0d9917ca00657798e258889e258931b8b1fb0b2bbb8c0ad90e8c89ce517da0ac",
+      "version_string": "Linux version 6.18.21-android17-5-g1d099fcb35e0-abogki538445360-4k (kleaf@build-host) (Android (15323222, +pgo, +bolt, +lto, +mlgo, based on r584948c) clang version 22.0.1 (https://android.googlesource.com/toolchain/llvm-project 2d65e4108033380e6fe8e08b1f1826cd2bfb0c99), LLD 22.0.1 (/mnt/disks/build-disk/src/googleplex-android/llvm-r584948-release/out/llvm-project/llvm 2d65e4108033380e6fe8e08b1f1826cd2bfb0c99)) #1 SMP PREEMPT Tue Jul 28 13:29:24 UTC 2026\n",
+      "matches_running_proc_version": true
+    }
+  }
+}
