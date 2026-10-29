@@ -1,0 +1,12 @@
+#!/system/bin/sh
+# o3p su shim -> asks the rootd daemon to run the command as root.
+SELF=/data/local/tmp/o3p_new.bin
+case "$1" in
+  -c) shift; CMD="$*" ;;
+  0)  shift; CMD="$*" ;;
+  --version) echo "o3p-su 1.0"; exit 0 ;;
+  "") exec $SELF --shell "id" ;;
+  *)  CMD="$*" ;;
+esac
+[ -z "$CMD" ] && CMD="id"
+exec $SELF --shell "$CMD"

@@ -1,0 +1,16 @@
+=== loop3 start 19:42:27
+[1] up 286->290 reboot=False  kernelsu=0
+[2] up 298->302 reboot=False  kernelsu=0
+[3] up 311->315 reboot=False UIDNOW uid=2000 kernelsu=0
+[4] up 324->327 reboot=False  kernelsu=0
+[5] up 336->339 reboot=False  kernelsu=0
+[6] up 347->352 reboot=False  kernelsu=0
+[7] up 360->365 reboot=False  kernelsu=0
+[8] up 373->378 reboot=False  kernelsu=0
+[9] up 386->390 reboot=False  kernelsu=0
+[10] up 399->403 reboot=False UIDNOW uid=2000 kernelsu=0
+[11] up 412->416 reboot=False  kernelsu=0
+[12] up 425->429 reboot=False  kernelsu=0
+[13] up 438->442 reboot=False  kernelsu=0
+[14] up 451->454 reboot=False  kernelsu=0
+=== loop3 end 19:45:24 hits=0

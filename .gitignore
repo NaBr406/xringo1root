@@ -1,0 +1,34 @@
+# Local images, device data, and compiled artifacts
+/device-dump/
+*.img
+*.bin
+*.ko
+*.apk
+*.idsig
+*.class
+*.dex
+*.jar
+*.so
+*.keystore
+*.jks
+*.pem
+*.key
+.env
+.env.*
+__pycache__/
+*.pyc
+/apk/build/
+/apk/kout/
+/apk/assets/su_arm64
+/o3root-port/build/
+/ab-logs/bzImage-*
+/trigger_arm64
+/trigger_v2_arm64
+/trigger_v2_x86_64
+/trigger_v3_x86_64
+/ab98260_arm64
+/extract.json
+/t.txt
+/wsl/build.log
+# Historical screenshots remain local; selected images can be added explicitly.
+/docs/*.png

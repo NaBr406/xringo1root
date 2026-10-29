@@ -1,0 +1,18 @@
+=== loop2 start 19:21:18
+[1] uptime 260 -> 365 rebooted=False kernelsu=0
+     UIDNOW uid=2000 euid=2000 gid=2000
+[2] uptime 366 -> 471 rebooted=False kernelsu=0
+     UIDNOW uid=2000 euid=2000 gid=2000
+[3] uptime 472 -> 72 rebooted=True kernelsu=0
+[3] device rebooted -> cooling down 45s
+[4] uptime 118 -> 75 rebooted=True kernelsu=0
+[4] device rebooted -> cooling down 45s
+[5] uptime 120 -> 71 rebooted=True kernelsu=0
+[5] device rebooted -> cooling down 45s
+[6] uptime 116 -> 222 rebooted=False kernelsu=0
+     UIDNOW uid=2000 euid=2000 gid=2000
+[7] uptime 252 -> 71 rebooted=True kernelsu=0
+[7] device rebooted -> cooling down 45s
+[8] uptime 116 -> 73 rebooted=True kernelsu=0
+[8] device rebooted -> cooling down 45s
+=== loop2 end 19:39:40
