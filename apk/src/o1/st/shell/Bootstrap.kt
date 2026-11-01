@@ -135,6 +135,60 @@ object Bootstrap {
 
     /** Already paired: just connect and run (no pairing needed again). */
     @JvmStatic
+    /** The app cannot write /data/local/tmp (771 + SELinux), but the adb shell
+     *  domain can. Ship the payload over the shell channel as base64. */
+    private fun pushPayload(client: AdbClient, ctx: Context, logger: Logger): Boolean {
+        // The payload is already in the app's private dir (MainActivity put it
+        // there). run-as lets the adb shell read that dir without any bulk
+        // transfer, which is far more reliable than piping base64 chunks.
+        val pkg = ctx.packageName
+        // one simple command per channel; mixing redirect + chmod + ls in a
+        // single line made adb return empty output
+        client.shellCommand(
+            "run-as $pkg cat files/exploit.bin > /data/local/tmp/o1p_e.bin"
+        ) { }
+
+        val out = StringBuilder()
+        client.shellCommand(
+            "chmod 755 /data/local/tmp/o1p_e.bin 2>/dev/null; ls -ln /data/local/tmp/o1p_e.bin 2>&1"
+        ) { bytes -> out.append(String(bytes, Charsets.UTF_8)) }
+
+        val text = out.toString()
+        logger.log("run-as 复制: " + text.trim())
+        if (text.contains("o1p_e.bin") && text.contains("76808")) {
+            return true
+        }
+
+        // fallback: push base64 in small batches
+        val bytes = try {
+            ctx.assets.open("exploit.bin").use { it.readBytes() }
+        } catch (t: Throwable) {
+            logger.log("读取内置载荷失败: $t")
+            return false
+        }
+        val b64 = android.util.Base64.encodeToString(bytes, android.util.Base64.NO_WRAP)
+        logger.log("回退：通过 shell 传输载荷（${bytes.size} 字节）...")
+        client.shellCommand("rm -f /data/local/tmp/o1p.b64") { }
+        var i = 0
+        val chunk = 1000
+        while (i < b64.length) {
+            val part = b64.substring(i, kotlin.math.min(i + chunk, b64.length))
+            client.shellCommand("echo -n '$part' >> /data/local/tmp/o1p.b64") { }
+            i += chunk
+        }
+        val out2 = StringBuilder()
+        client.shellCommand(
+            "base64 -d /data/local/tmp/o1p.b64 > /data/local/tmp/o1p_e.bin 2>/dev/null; " +
+                    "rm -f /data/local/tmp/o1p.b64; " +
+                    "chmod 755 /data/local/tmp/o1p_e.bin; " +
+                    "ls -l /data/local/tmp/o1p_e.bin"
+        ) { bytes2 -> out2.append(String(bytes2, Charsets.UTF_8)) }
+        val text2 = out2.toString()
+        logger.log("回退传输结果: " + text2.trim())
+        return text2.contains("o1p_e.bin")
+    }
+
+    @JvmStatic
     fun runOnly(ctx: Context, command: String, logger: Logger): Boolean {
         val k = adbKey(ctx)
         if (k == null) {
@@ -152,6 +206,23 @@ object Bootstrap {
             val client = AdbClient("127.0.0.1", connPort, k)
             client.connect()
             logger.log("已连接（shell 域，Seccomp=0）")
+
+            // make sure the payload exists remotely before running it
+            val probe = StringBuilder()
+            client.shellCommand(
+                "ls -ln /data/local/tmp/o1p_e.bin 2>/dev/null || echo MISSING"
+            ) { b -> probe.append(String(b, Charsets.UTF_8)) }
+            val needPush = probe.toString().contains("MISSING") ||
+                    !probe.toString().contains(" o1p_e.bin")
+            if (needPush) {
+                if (!pushPayload(client, ctx, logger)) {
+                    client.close()
+                    return false
+                }
+            } else {
+                logger.log("载荷已存在，跳过传输")
+            }
+
             client.shellCommand(command) { bytes ->
                 val text = String(bytes, Charsets.UTF_8)
                 if (text.isNotEmpty()) logger.log(text)

